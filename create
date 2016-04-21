@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "#!/usr/bin/env python" >> $1.py
+chmod u+rwx $1.py
+emacs --fullscreen $1.py &
