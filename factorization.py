@@ -3,17 +3,16 @@
 from __future__ import print_function
 from __future__ import division
 
-import numpy
 import math
 
 class prime_factorization:
     def __init__(self,a,b):
         self.primefactors=a
         self.exponents=b
-        expded=numpy.array([],dtype=int)
-        for i in range(0,a.size):
+        expded=[]
+        for i in range(0,len(a)):
             for j in range(0,b[i]):
-                expded=numpy.append(expded,a[i])
+                expded.append(a[i])
         self.expanded=expded
                 
     def prnt(self):
@@ -24,36 +23,46 @@ class prime_factorization:
 def prime_factors(n):
     m=n
     if(isinstance(n,(int,long))):
-        factors=numpy.array([],dtype=int)
-        expos=numpy.array([],dtype=int)
+        factors=[]
+        expos=[]
         for i in range(2,1+int(math.floor(math.sqrt(n)))):
             if(m%i==0):
-                factors=numpy.concatenate((factors,numpy.array([i],dtype=int)))
+                factors.append(i)
                 counter=0
                 while(m%i==0):
                     counter=counter+1
-                    m=m/i
-                expos=numpy.concatenate((expos,numpy.array([counter],dtype=int)))
-        if(m==1):
-            to_return=prime_factorization(factors,expos)
-        else:
-            factors=numpy.concatenate((factors,numpy.array([m],dtype=int)))
-            expos=numpy.concatenate((expos,numpy.array([1],dtype=int)))
-            to_return=prime_factorization(factors,expos)
-        return to_return
+                    m=m//i
+                expos.append(counter)
+        if(m != 1):
+            factors.append(m)
+            expos.append(1)
+        return prime_factorization(factors,expos)
     else:
         print ("nonintegral value")
         quit()
 
-def proper_divisors(n):
-    limit_up_to_which_to_check = n//2
-    list_of_proper_divisors = numpy.array([], dtype=int)
-    for putative_factor in range(1,1+limit_up_to_which_to_check):
-        if (n%putative_factor == 0):
-            list_of_proper_divisors=numpy.concatenate((list_of_proper_divisors,numpy.array([putative_factor],dtype=int)))
-    return list_of_proper_divisors
+def generate_possible_products(index_primefactor, array_prime_factors, array_exponents):
+    if (index_primefactor == len(array_prime_factors) - 1):
+        for index_exponent in range(0, 1 + array_exponents[index_primefactor]):
+            yield array_prime_factors[index_primefactor]**index_exponent
+    else:
+        for index_exponent in range(0, 1 + array_exponents[index_primefactor]):
+            rest_of_products_generated = generate_possible_products(index_primefactor + 1, array_prime_factors, array_exponents)
+            for rest_of_products in rest_of_products_generated:
+                yield (array_prime_factors[index_primefactor]**index_exponent)*rest_of_products
 
 def all_factors(n):
-    list_of_proper_divisors = proper_divisors(n)
-    list_of_factors=numpy.concatenate((list_of_proper_divisors,numpy.array([n],dtype=int)))
-    return list_of_factors
+    list_of_proper_divisors = []
+    prime_factorization_of_n = prime_factors(n)
+    array_prime_factors = prime_factorization_of_n.primefactors
+    array_exponents = prime_factorization_of_n.exponents
+    possible_products_generator = generate_possible_products(0, array_prime_factors, array_exponents)
+    for product in possible_products_generator:
+        list_of_proper_divisors.append(product)
+    list_of_proper_divisors.sort()
+    return list_of_proper_divisors
+    
+def proper_divisors(n):
+    list_of_proper_divisors = all_factors(n)
+    del list_of_proper_divisors[-1]
+    return list_of_proper_divisors
