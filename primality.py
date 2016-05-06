@@ -4,6 +4,8 @@ from __future__ import division
 import math
 
 def is_prime(number_to_check):
+    if (number_to_check < 2):
+        return False
     if (number_to_check==2):
         return True
     elif (number_to_check==3):
