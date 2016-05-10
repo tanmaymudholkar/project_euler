@@ -17,7 +17,7 @@ class prime_factorization:
         print ("Exponents: %s"%(self.exponents))
         print ("Expanded: %s"%(self.expanded))
 
-def prime_factors(n):
+def get_prime_factorization(n):
     m=n
     if(isinstance(n,(int,long))):
         factors=[]

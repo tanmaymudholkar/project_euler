@@ -2,12 +2,12 @@
 
 from __future__ import print_function, division
 
-from factorization import prime_factors
-from utilities import number_of_digits
+from factorization import get_prime_factorization
+from utilities import get_number_of_digits
 from math import floor
 
 def reciprocal_is_recurring(n):
-    list_of_prime_factors = prime_factors(n).primefactors
+    list_of_prime_factors = get_prime_factorization(n).primefactors
     if (list_of_prime_factors == [2] or list_of_prime_factors == [5] or list_of_prime_factors == [2,5]):
         return False
     else:
@@ -23,7 +23,7 @@ def get_digit_and_remainder(numerator_digit, remainder_from_previous_digit, deno
 def get_maximal_list_of_repeating_digits(n):
     if (reciprocal_is_recurring(n)):
         maximum_size_of_pattern = n-1
-        no_of_digits = number_of_digits(n)
+        no_of_digits = get_number_of_digits(n)
         number_of_places_after_decimal_point_at_which_to_start = 2*no_of_digits
         # list_of_digits = []
         # for index in range(number_of_places_after_decimal_point_at_which_to_start, number_of_places_after_decimal_point_at_which_to_start + maximum_size_of_pattern + 1):
