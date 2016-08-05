@@ -48,9 +48,14 @@ def generate_possible_products(index_primefactor, array_prime_factors, array_exp
             for rest_of_products in rest_of_products_generated:
                 yield (array_prime_factors[index_primefactor]**index_exponent)*rest_of_products
 
-def all_factors(n):
+def get_prime_factors(n):
+    prime_factorization = get_prime_factorization(n)
+    array_prime_factors = prime_factorization.primefactors
+    return array_prime_factors
+
+def get_all_factors(n):
     list_of_proper_divisors = []
-    prime_factorization_of_n = prime_factors(n)
+    prime_factorization_of_n = get_prime_factorization(n)
     array_prime_factors = prime_factorization_of_n.primefactors
     array_exponents = prime_factorization_of_n.exponents
     possible_products_generator = generate_possible_products(0, array_prime_factors, array_exponents)
