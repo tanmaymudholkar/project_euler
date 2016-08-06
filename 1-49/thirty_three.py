@@ -2,8 +2,8 @@
 
 from __future__ import print_function, division
 
-from utilities import get_list_of_digits
-from rationalNumber import rationalNumber
+from peModules.miscellaneous import get_list_of_digits
+from peModules.rationalNumber import rationalNumber
 
 def isTrivialSelfCancelling(numerator, denominator):
     if (numerator%11 == 0 and denominator%11 == 0):

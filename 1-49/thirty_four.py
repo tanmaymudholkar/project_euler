@@ -2,7 +2,7 @@
 
 from __future__ import division, print_function
 import math
-from utilities import get_list_of_digits
+from peModules.miscellaneous import get_list_of_digits
 
 # populate dictionary
 digitFactorials = {digit:math.factorial(digit) for digit in range(0,10)}

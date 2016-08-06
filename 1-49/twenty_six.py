@@ -2,8 +2,8 @@
 
 from __future__ import print_function, division
 
-from factorization import get_prime_factorization
-from utilities import get_number_of_digits
+from peModules.factorization import get_prime_factorization
+from peModules.miscellaneous import get_number_of_digits
 from math import floor
 
 def reciprocal_is_recurring(n):

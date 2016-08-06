@@ -65,6 +65,6 @@ def get_all_factors(n):
     return list_of_proper_divisors
     
 def proper_divisors(n):
-    list_of_proper_divisors = all_factors(n)
+    list_of_proper_divisors = get_all_factors(n)
     del list_of_proper_divisors[-1]
     return list_of_proper_divisors

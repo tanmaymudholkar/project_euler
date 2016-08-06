@@ -2,7 +2,7 @@
 
 from __future__ import print_function, division
 
-from factorization import proper_divisors
+from peModules.factorization import proper_divisors
 
 def perfectness(n):
     list_of_proper_divisors = proper_divisors(n)

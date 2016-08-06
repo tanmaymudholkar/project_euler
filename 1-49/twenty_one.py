@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
-from __future__ import division
+from __future__ import print_function, division
 
-from factorization import proper_divisors
-from primality import is_prime
+from peModules.factorization import proper_divisors
+from peModules.primality import is_prime
 
 def sum_proper_divisors(n):
     list_proper_divisors = proper_divisors(n)

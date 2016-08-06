@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function, division
-from utilities import get_list_of_digits, get_sum_of_nth_powers
+from peModules.miscellaneous import get_list_of_digits, get_sum_of_nth_powers
 
 # Only up to 6 digits possible because we seek a number with m digits where:
 # 10**m*a_m + 10**(m-1)*a_(m-1) + ... + a_0 = a_m**5 + a_(m-1)**5 + ... + (a_0)**5

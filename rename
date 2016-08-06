@@ -1,7 +1,0 @@
-#!/bin/bash
-
-for f in *; do 
-mv $f $f.old
-sed 's/#!/usr/bin/env python/#!\/usr\/bin\/env python/' $f.old > $f
-rm -f $f.old
-done

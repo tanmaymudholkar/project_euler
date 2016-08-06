@@ -1,7 +1,7 @@
 from __future__ import print_function, division
 
 from factorization import get_prime_factors
-from utilities import get_gcd
+from miscellaneous import get_gcd
 
 class rationalNumber:
     def __init__(self, original_numerator=0, original_denominator=1, isPositiveOrZero=True):

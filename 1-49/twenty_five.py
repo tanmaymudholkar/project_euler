@@ -2,7 +2,7 @@
 
 from __future__ import print_function, division
 
-from fibonacci import fib
+from peModules.fibonacci import fib
 
 def number_of_digits(n):
     number_of_digits_so_far = 0

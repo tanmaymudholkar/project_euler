@@ -2,7 +2,7 @@
 
 from __future__ import division, print_function
 
-from primality import is_prime
+from peModules.primality import is_prime
 
 def quadratic_form(a,b,n):
     return (n**2 + a*n + b)
