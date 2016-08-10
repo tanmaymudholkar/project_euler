@@ -3,7 +3,11 @@ from __future__ import print_function, division
 import math
 
 def is_prime(number_to_check):
-    if (number_to_check < 2):
+    if (not(isinstance(number_to_check, int))):
+        raise TypeError('Primality only defined for integers!')
+    if (number_to_check < 1):
+        raise ValueError('Integer needs to be greater than or equal to 1!')
+    if (number_to_check==1):
         return False
     if (number_to_check==2):
         return True
