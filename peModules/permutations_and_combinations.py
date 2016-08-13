@@ -13,3 +13,17 @@ def listCyclicPermutationGenerator(sourceList):
         lastElement = currentList.pop(-1)
         currentList.insert(0, lastElement)
         yield currentList
+
+def listPermutations(sourceList):
+    if (not(isinstance(sourceList,list))):
+        raise TypeError('Input not a list?')
+    if (len(set(sourceList)) != len(sourceList)):
+        raise TypeError('Input list has at least one repeated element?')
+    if (len(sourceList) == 0):
+        yield []
+
+    for sourceIndex in range(len(sourceList)):
+        newList = [element for element in sourceList]
+        sourceElement = newList.pop(sourceIndex)
+        for newPermutation in listPermutations(newList):
+            yield [sourceElement] + newPermutation
